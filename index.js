@@ -12,26 +12,13 @@ const inputs = ["rock", "paper", "scissors"];
 //
 rockInput.addEventListener("click", function () {
   playRound(`${inputs[0]}`, getComputerChoice());
-  showInputWon;
 });
 paperInput.addEventListener("click", function () {
   playRound(`${inputs[1]}`, getComputerChoice());
-  showInputWon;
 });
 scissorsInput.addEventListener("click", function () {
   playRound(`${inputs[2]}`, getComputerChoice());
-  showInputWon;
 });
-
-function showInputWon() {
-  const inputWon = document.getElementById("inputwon");
-  // Remove the fadeIn class if it exists to reset the animation
-  inputWon.classList.remove("fadeIn");
-  // Trigger reflow to restart the animation
-  void inputWon.offsetWidth;
-  // Add the fadeIn class to start the animation
-  inputWon.classList.add("fadeIn");
-}
 
 function getComputerChoice() {
   return inputs[Math.floor(Math.random() * inputs.length)];
