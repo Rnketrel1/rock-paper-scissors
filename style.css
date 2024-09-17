@@ -1,0 +1,130 @@
+body {
+  font-family: "Arial", sans-serif;
+  background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.game-buttons {
+  display: flex;
+  gap: 10px; /* Adds space between buttons */
+  width: 300px;
+  margin-bottom: 20px;
+}
+
+button {
+  background: #fff;
+  border: 2px solid #333;
+  border-radius: 50%;
+  font-size: 2rem;
+  width: 100px;
+  height: 100px;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+button:active {
+  transform: scale(0.95);
+}
+
+#results {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+#results p {
+  font-size: 1.5rem;
+  color: #333;
+  margin: 5px;
+  opacity: 0;
+  animation: fadeIn 1s ease forwards;
+}
+
+#inputwon {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #4caf50;
+  opacity: 0;
+  animation: fadeIn 2s ease forwards;
+  margin-top: 20px;
+}
+
+#humanscore,
+#computerscore {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+#winnerhuman {
+  font-weight: bold;
+  color: #4caf50;
+}
+
+#winnercomputer {
+  font-weight: bold;
+  color: #f44336;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+button#rock {
+  background: #ff5722;
+  color: #fff;
+}
+
+button#paper {
+  background: #3f51b5;
+  color: #fff;
+}
+
+button#scissors {
+  background: #009688;
+  color: #fff;
+}
+
+button#rock:hover {
+  animation: pulse 0.6s infinite;
+}
+
+button#paper:hover {
+  animation: pulse 0.6s infinite;
+}
+
+button#scissors:hover {
+  animation: pulse 0.6s infinite;
+}

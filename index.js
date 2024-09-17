@@ -1,4 +1,38 @@
+const rockInput = document.querySelector("#rock");
+const paperInput = document.querySelector("#paper");
+const scissorsInput = document.querySelector("#scissors");
+const resultDiv = document.querySelector("#results");
+const humanText = document.querySelector("#humanscore");
+const computerText = document.querySelector("#computerscore");
+const winnerHuman = document.querySelector("#winnerhuman");
+const winnerComputer = document.querySelector("#winnercomputer");
+const inputWon = document.querySelector("#inputwon");
 const inputs = ["rock", "paper", "scissors"];
+
+//
+rockInput.addEventListener("click", function () {
+  playRound(`${inputs[0]}`, getComputerChoice());
+  showInputWon;
+});
+paperInput.addEventListener("click", function () {
+  playRound(`${inputs[1]}`, getComputerChoice());
+  showInputWon;
+});
+scissorsInput.addEventListener("click", function () {
+  playRound(`${inputs[2]}`, getComputerChoice());
+  showInputWon;
+});
+
+function showInputWon() {
+  const inputWon = document.getElementById("inputwon");
+  // Remove the fadeIn class if it exists to reset the animation
+  inputWon.classList.remove("fadeIn");
+  // Trigger reflow to restart the animation
+  void inputWon.offsetWidth;
+  // Add the fadeIn class to start the animation
+  inputWon.classList.add("fadeIn");
+}
+
 function getComputerChoice() {
   return inputs[Math.floor(Math.random() * inputs.length)];
 }
@@ -8,47 +42,48 @@ let computerScore = 0;
 
 function playRound(humanChoice, computerChoice) {
   if (humanChoice == computerChoice) {
-    console.log("Tie");
+    inputWon.innerText = "That one was a tie";
     humanScore = humanScore + 0;
     computerScore = computerScore + 0;
   } else if (humanChoice == "rock" && computerChoice == "paper") {
-    console.log("Computer wins paper beats rock");
+    inputWon.innerText = "You won that round, but will you win the war?";
+    computerText.innerText++;
     computerScore++;
   } else if (humanChoice == "scissors" && computerChoice == "paper") {
-    console.log("You win scissors beats paper");
+    inputWon.innerText = "You won that round, but will you win the war?";
+    humanText.innerText++;
     humanScore++;
   } else if (humanChoice == "rock" && computerChoice == "scissors") {
-    console.log("You win rock beats scissors");
+    inputWon.innerText = "You won that round, but will you win the war?";
+    humanText.innerText++;
     humanScore++;
   } else if (humanChoice == "paper" && computerChoice == "scissors") {
-    console.log("Computer wins scissors beats paper");
+    inputWon.innerText = "You lost that round, but will you win the war?";
+    computerText.innerText++;
     computerScore++;
   } else if (humanChoice == "scissors" && computerChoice == "rock") {
-    console.log("Computer wins rock beats scissors");
+    inputWon.innerText = "You lost that round, but will you win the war?";
+    computerText.innerText++;
     computerScore++;
   } else if (humanChoice == "paper" && computerChoice == "rock") {
-    console.log("You win paper beats rock");
+    inputWon.innerText = "You lost that round, but will you win the war?";
+    humanText.innerText++;
     humanScore++;
   } else {
     console.log("You did not enter a correct value");
   }
-}
-
-function playGame(i) {
-  for (let i = 0; i < 5; i++) {
-    let humanSelection = prompt("Enter a value");
-    const computerSelection = getComputerChoice();
-    let round = playRound(humanSelection, computerSelection);
-    console.log(humanScore);
-    console.log(computerScore);
-  }
-}
-playGame();
-function result() {
-  if (humanScore > computerScore) {
-    console.log("You win congrats!");
+  if (humanScore === 5) {
+    winnerHuman.innerText = "You win congrats!";
+    humanScore = 0;
+    computerScore = 0;
+    humanText.innerText = "0";
+    computerText.innerText = "0";
+  } else if (computerScore === 5) {
+    winnerHuman.innerText = "Computer wins";
+    humanScore = 0;
+    computerScore = 0;
+    humanText.innerText = "0";
+    computerText.innerText = "0";
   } else {
-    console.log("Computer wins");
   }
 }
-result();
